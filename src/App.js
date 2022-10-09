@@ -1,5 +1,5 @@
 import './App.css';
-import React,{useState} from 'react';
+import React,{ useState} from 'react';
 import Form from './components/Form';
 import Listitem from './components/Listitem';
 
@@ -21,21 +21,26 @@ const submitHandler = (e)=>{
         return {...prev,title:""}
       })
       
+    }else{
+      alert("Field is empty!!! Enter Something")
     }
 }
 
 const deleteHandler = (todoID)=>{
-   setAllTodos((prev)=>{
-    return prev.filter((todo,idx)=>{
-      return todoID !== todo.id;
-    })
+  
+  setAllTodos((prev)=>{
+   return prev.filter((todo,idx)=>{
+     return todoID !== todo.id;
    })
+  })
+
 }
 
 const completeHandler = (todoid)=>{
    let tempTodos = [...allTodos];
    let todo = tempTodos.find((todo)=>{
     return todo.id === todoid;
+
   })
   
   todo.isDone=true;
@@ -44,9 +49,9 @@ const completeHandler = (todoid)=>{
 }
 
   return (
-    <div className="App --flex-center --100vh --bg-primary">
+    <div className="App --d-flex --justify-center --align-start  --mh-100vh --bg-primary">
 
-      <div className='--dir-column --card'>
+      <div style={{width:"450px"}} className='--dir-column --card'>
       <Form 
         onSubmit={submitHandler} 
         title={todo.title} 
@@ -62,7 +67,8 @@ const completeHandler = (todoid)=>{
             {
               allTodos.map((todo,idx)=>{
                 return(
-                  <Listitem
+                  <Listitem 
+                  
                    key={todo.id} 
                    todo={todo} 
                    onComplete={completeHandler} 
