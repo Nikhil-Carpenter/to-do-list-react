@@ -30,9 +30,14 @@
 
 .isdone{
   text-decoration: line-through;
-  /* background-color: var(--color-success); */
-  opacity: 0.5;
+  /* background-color: var(--color-success); */  
 }
+
+.add-opacity{
+  opacity: 0.5;
+  background-color: lightgray;
+}
+
 
 
 html {
